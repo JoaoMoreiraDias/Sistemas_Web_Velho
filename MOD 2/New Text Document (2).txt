@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+<meta charset="utf-8">
+<title>Ficha de Encomenda de Pizzas</title>
+<link rel="stylesheet" type="text/css" href="Lab_32_JS.css">
+<script type="text/javascript">
+
+function campos_ok(form)
+{
+var resultado=true;
+
+if (isNaN(form.total_pizza.value)==true)
+{
+return false;
+}
+if (isNaN(form.total_bebida.value)==true)
+{
+return false;
+}
+if (isNaN(form.total_ingrediente.value)==true)
+{
+return false;
+}
+return resultado;
+
+}
+function calcular(form)
+{
+var resultado = 0;
+if(campos_ok(form)==true)
+{
+resultado += parseInt(form.total_pizza.value);
+resultado += parseInt(form.total_bebida.value);
+resultado += parseInt(form.total_ingrediente.value);
+document.getElementById('total_pagar').innerHTML = resultado;
+}
+else{
+alert("Os campos tem que ser numeros!");
+}
+}
+function limpar(form)
+{
+document.getElementById('total_pagar').innerHTML = 0;
+
+}
+</script>
+</head>
+<header>Ficha de Encomenda de Pizzas</header>
+<br/>
+<form name="pizza">
+<table>
+<tr>
+<td>Qual a Pizza a encomendar? </td>
+<td>
+<select size="1" name="nome_pizza">
+<option selected>Seleccione Pizza</option>
+<option value="pizza1">Pizza 1</option>
+<option value="pizza2">Pizza 2</option>
+<option value="pizza3">Pizza 3</option>
+<option value="pizza4">Pizza 4</option>
+<option value="pizza5">Pizza 5</option>
+<option value="pizza6">Pizza 6</option>
+</select>
+</td>
+<td>Quantidade: </td>
+<td>
+<select size="1" name="quantidade_pizza">
+<option selected value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+</td>
+<td>Valor Pizza(s) </td>
+<td><input type="text" value="0" name="total_pizza" onblur="calcular(this.form)" onclick="limpar(this.form.total_pizza)"></td>
+</tr>
+<tr>
+<td>Qual a bebida? </td>
+<td>
+<select size="1" name="nome_bebida">
+<option selected>Seleccione Bebida</option>
+<option value="bebida1">Bebida 1</option>
+<option value="bebida2">Bebida 2</option>
+<option value="bebida3">Bebida 3</option>
+<option value="bebida4">Bebida 4</option>
+<option value="bebida5">Bebida 5</option>
+<option value="bebida6">Bebida 6</option>
+</select>
+</td>
+<td>Quantidade: </td>
+<td>
+<select size="1" name="quantidade_bebida">
+<option selected value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+</td>
+<td>Valor bebida(s)</td>
+<td><input type="text" value="0" name="total_bebida" onblur="calcular(this.form)" onclick="limpar(this.form.total_bebida)"></td>
+</tr>
+<tr>
+<td><input type="radio" name="extra_queijo" value="extra_queijo">Extra Queijo</td>
+<td><input type="radio" name="massa_grossa" value="massa_grossa">Massa Grossa</td>
+<td><input type="radio" name="pimentos" value="pimentos">Pimentos</td>
+<td><input type="radio" name="alcachofras" value="alcachofras">Alcochofras</td>
+<td>Valor ingrediente(s)</td>
+<td><input type="text" value="0" name="total_ingrediente" onblur="calcular(this.form)" onclick="limpar(this.form.total_ingrediente)"></td>
+</tr>
+</table>
+<table>
+<tr>
+<br/><td class="titulo" colspan="4">Formas para entrega:</td>
+</tr>
+<tr>
+<td>Nome: <input type="text" name="nome"></td>
+</tr>
+<tr>
+<td>Morada: <input type="text" name="morada"></td>
+</tr>
+<tr>
+<td>Telefone: <input type="text" name="telefone"></td>
+</tr>
+</table>
+<table>
+<tr>
+<br/><td class="titulo" colspan="4">Forma de pagamento:</td>
+</tr>
+<tr>
+<td><input type="radio" name="pagamento" value="visa">VISA</td>
+<td><input type="radio" name="pagamento" value="contra_entrega">Contra entrega</td>
+<td><input type="radio" name="pagamento" value="factura">A Factura (30 dias, +15%)</td>
+<td>Número do cartão VISA: <input type="text" name="numero_visa"></td>
+</tr>
+</table>
+<table>
+<tr>
+<td class="resultado_total_pagar"><br/>Total a pagar:</td>
+<td class="td_total_pagar"><div id="total_pagar" class="total_pagar"></div></td>
+</tr>
+</table>
+<input type="button" value="Enviar!"><input type="reset" value="Limpar" onclick=limpar(this.form)>
+</form>
+</body>
+</html>
+
+-- 
+-João Moreira Dias

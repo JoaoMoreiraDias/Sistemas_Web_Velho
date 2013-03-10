@@ -1,0 +1,39 @@
+body
+{
+    font-family:Verdana;
+    font-size:9pt;
+    color:Black;
+    bgcolor="#C0C0C0"
+}
+
+table
+{
+    font-family:Verdana;
+    font-size:9pt;
+    color:Black;
+    'box-shadow:5px 5px 2px gray;
+    width: 60%;
+    }
+    
+td
+{
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+    border-collapse: collapse
+    }
+
+table.corpo
+{
+    border-radius:5px;
+    background-color:#B8B8B8 ;
+    padding:5px;
+    }
+input.bold{
+    font-size:14pt;
+    font-weight:bold;
+    text-align: right;
+    color: red;
+    border-style: hidden;
+    background-color: #E8E8E8
+}

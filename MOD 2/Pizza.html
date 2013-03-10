@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+  <title>Pizzas</title>
+  <link href="estilos.css" rel="stylesheet">
+    
+  <script language="JavaScript">
+    function validar(form) {
+        
+        // Testa se o utilizador escolheu pelo menos 1 Pizza
+        if ( form.pizza.selectedIndex == 0 || form.quantp.selectedIndex == 0 ) {
+          window.alert("Tem que seleccionar pelo menos 1 Pizza!");
+          return(false);
+        } else {
+        
+        // Testa se os dados para entrega estao preenchidos
+        var s = form.nome.value;
+        var s1 = form.morada.value;
+        var s2 = form.telefone.value;
+        if ( (s.length < 5) || (s1.length < 6) || (s2.length < 6) ) {
+          window.alert("Preencha correctamente o seu Nome, Morada e Telefone");
+          return(false);
+          } else {
+          // Testa se os dados do pagamento estao correctos
+          if ( form.pag[0].checked != true && form.pag[1].checked != true && form.pag[2].checked != true ) {
+             window.alert("Escolha a forma de pagamento!");
+             return(false);
+             } else {
+             if ( form.pag[0].checked == true && form.nvisa.value.length != 12 ) {
+                window.alert("Introduza correctamente o seu numero VISA");
+                return(false);
+             } else {
+                return(true); // So neste caso e que e autorizada a encomenda!
+                }
+             }
+            }
+          }
+    }
+    
+    function recalcular(form) {
+      var total=0;
+      
+      
+      total = parseFloat(document.PizzaExp.valor_pizza.value) +
+                                parseFloat(document.PizzaExp.valor_bebida.value) +
+                                parseFloat(document.PizzaExp.valor_op_pizza.value);
+      
+      document.PizzaExp.valor_total.value= Math.round (total*100) / 100
+    }
+    
+    function limpa_valor_bebida(form) {
+      document.PizzaExp.valor_bebida.value=""
+    }
+    function limpa_valor_pizza(form) {
+      document.PizzaExp.valor_pizza.value=""
+    }
+    function limpa_valor_op_pizza(form) {
+      document.PizzaExp.valor_op_pizza.value=""
+    }
+    
+    
+    
+    
+  </script>
+  </head>
+  
+  <body>
+  <h2>Ficha de Encomenda de Pizzas</h2><p/>
+  
+  <form name = "PizzaExp" method="post" action = "mailto:sergiosorte@upt.pt" onSubmit = "return validar(document.PizzaExp)">
+  <table>
+    <tr>
+      <td>Qual a Pizza a encomendar?</td>
+      <td>
+        <select name="pizza">
+          <option/>
+          <option>Marguerita</option>
+          <option>Capriciosa</option>
+          <option>Quatro EstaÁıes</option>
+          <option>Calzone</option>
+          <option>Tropical</option>
+          <option>Maritima</option>
+        </select>
+      </td>
+      <td>Quantidade:</td>
+      <td>
+        <select name = "quantp">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select>
+      </td>
+      
+      <td>Valor Pizza(s)</td>
+      <td> <input type="text" name="valor_pizza" size="10" value="0.00" onblur="recalcular( )" onclick="limpa_valor_pizza()" /></td>
+    
+    
+    </tr>
+    <tr>
+      <td>Qual a bebida?</td>
+      <td>
+        <select name="bebida">
+          <option/>
+          <option>Coca Cola</option>
+          <option>Seven Up</option>
+          <option>Agua</option>
+          <option>Cerveja</option>
+        </select>
+      </td>
+      <td>Quantidade:<td>
+        <select name = "quantb">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select>
+      </td>
+      
+      <td>Valor bebida(s)</td>
+      <td> <input type="text" name="valor_bebida" size="10" value="0.00" onblur="recalcular( )" onclick="limpa_valor_bebida()"/></td>
+      
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="opcao1"/>Extra Queijo
+      </td>
+      <td>
+        <input type="checkbox" name="opcao2"/>Massa Grossa
+      </td>
+      <td>
+        <input type="checkbox" name="opcao3"/>Pimentos
+      </td>
+      <td>
+        <input type="checkbox" name="opcao4"/>Alcachofras
+      </td>
+      
+      <td>Valor ingredientes</td>
+      <td> <input type="text" name="valor_op_pizza" size="10" value="0.00" onblur="recalcular( )" onclick="limpa_valor_op_pizza()"/></td>
+      
+    </tr>
+  </table>
+  
+  <br>
+  
+  <table>
+  <tr>
+    <td colspan=4><strong>Dados para entrega:</strong></td>
+  </tr>
+  <tr>
+    <td colspan=4>Nome:<input type="text" name="nome" size="50" /></td>
+  </tr>
+  <tr>
+    <td colspan=4>Morada: <input type="text" name="morada" size="60"></td>
+  </tr>
+  <tr>
+    <td colspan=4>Telefone: <input type="text" name="telefone" size="20"></td>
+  </tr>
+  <tr>
+    <td colspan=4><br><b>Forma de pagamento:</b></td></tr>
+  <tr>
+    <td><input type="radio" name="pag" />VISA</td>
+    <td><input type="radio" name="pag" />Contra entrega</td>
+    <td><input type="radio" name="pag" />A Factura (30 dias, +15%)</td>
+    <td>N&uacute;mero do cart&atilde;o VISA: <input type="text" name="nvisa" /></td>
+  </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td align="center" ><br><b>Total a pagar:</b><input type="text" name="valor_total" class="bold" size="10" /><br></td>
+    </tr>
+  </table>
+
+
+  <input type="submit" value="Enviar!" />
+  <input type="reset" value="Limpar" />
+  </form>
+  </body>
+</html>

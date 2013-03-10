@@ -1,0 +1,55 @@
+.cabe{
+    background-color: #00FFFF;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border-radius: 10px;
+    font-family: calibri;
+}
+
+h2{
+    font-style: italic; 
+}
+
+.nav{
+    background-color: #1E90FF;
+    font-weight: bold;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border-radius: 10px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-family: calibri;
+    color: white;
+}
+
+.tab{
+    background-color: #FFFFFF;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border-radius: 10px;
+    font-family: calibri;
+}
+
+.texto{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.home{
+    text-align: right;
+    font-weight: bold;
+    font-family: calibri;
+    border-radius: 10px;
+}
+
+.sub{
+    font-weight: bold;
+    font-style: italic;
+    background-color: #C0C0C0;
+    border-radius: 10px;
+}
+
+.footer{
+    background-color: #1E90FF;
+    color: white;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border-radius: 10px;
+    font-family: calibri;
+}
